@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
+
+		<title>HayatPriceManagement</title>
+
+		<!--<script src="/sap/public/bc/ui2/services/sap/ui2/srvc/error.js"></script>-->
+		<!--<script src="/sap/public/bc/ui2/services/sap/ui2/srvc/utils.js"></script>-->
+		<!--<script src="/sap/public/bc/ui2/shell-api/sap/ui2/shell/startup.js"></script>-->
+		<!--<script src="/sap/public/bc/ui2/shell-api/sap/ui2/shell/shell.js"></script>-->
+		
+			<!--src="../../resources/sap-ui-core.js"-->
+			<!--src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"-->
+		<script id="sap-ui-bootstrap"
+		 	src="resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-resourceroots='{"hayat.fioHayatPriceManagement": ""}'>
+		</script>
+
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		<script>
+			sap.ui.getCore().attachInit(function() {
+				new sap.m.Shell({
+					app: new sap.ui.core.ComponentContainer({
+						height : "100%",
+						name : "hayat.fioHayatPriceManagement"
+					})
+				}).placeAt("content");
+			
+
+
+			});
+		</script>
+	</head>
+
+	<body class="sapUiBody" id="content">
+	</body>
+
+</html>

@@ -1,0 +1,19 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	controllerName="hayat.fioHayatPriceManagement.controller.SearchPanel" xmlns:html="http://www.w3.org/1999/xhtml">
+			<Panel>
+				<smartFilterBar:SmartFilterBar id="smartFilterBar" showFilterConfiguration="false" entitySet="PmRequestSet" useToolbar="false" search="onSearchPMRequests" persistencyKey="SmartFilterPKey" >
+					<smartFilterBar:controlConfiguration groupName="Search Parameters">
+						<smartFilterBar:ControlConfiguration key="Werks" label="{i18n>werks}"  visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"/>
+						<smartFilterBar:ControlConfiguration key="Gsber" label="{i18n>gsber}" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"/>
+						<smartFilterBar:ControlConfiguration key="Node" label="{i18n>nodeLabel}" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"/>
+						<!--<smartFilterBar:ControlConfiguration key="Werks" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"/>-->
+						<!--<smartFilterBar:ControlConfiguration key="Ebeln" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"/>-->
+						<smartFilterBar:ControlConfiguration groupId="_BASIC" controlType="input" key="Apnxt" label="{i18n>userName}" visibleInAdvancedArea="true">
+							<smartFilterBar:customControl>
+								<Input enabled="false" value="{user>/Id}"/>
+							</smartFilterBar:customControl>
+						</smartFilterBar:ControlConfiguration>
+					</smartFilterBar:controlConfiguration>
+				</smartFilterBar:SmartFilterBar>
+			</Panel>
+</mvc:View>

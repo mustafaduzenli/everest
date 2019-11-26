@@ -1,0 +1,57 @@
+{
+    "resources": [
+        {
+            "name": "view/PriceManagementRequestList.view.xml"
+        },
+        {
+            "name": "view/Overview.view.xml"
+        },
+        {
+            "name": "view/SearchPanel.view.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "localService/ZRT_ODATA_001_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "controller/SearchPanel.controller.js"
+        },
+        {
+            "name": "controller/PriceManagementRequestList.controller.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "neo-app.json"
+        }
+    ]
+}

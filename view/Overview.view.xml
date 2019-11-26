@@ -1,0 +1,25 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="hayat.fioHayatPriceManagement.controller.App"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>appTitle}" class="sapUiResponsiveContentPadding" >
+		<headerContent></headerContent>
+		<content>
+			<mvc:XMLView id="searchPanelView" viewName="hayat.fioHayatPriceManagement.view.SearchPanel"/>
+			<mvc:XMLView id="pmrListView" viewName="hayat.fioHayatPriceManagement.view.PriceManagementRequestList"/>
+			<!--<mvc:XMLView id="pmrListView" viewName="hayat.fioHayatPriceManagement.view.PriceManagementRequestSmartTable"/>-->
+		</content>
+		<footer>
+			<OverflowToolbar>                
+			<Button
+                    icon="sap-icon://alert"
+                    text="{=${message>/}.length}"
+                    visible="{=${message>/}.length > 0}"
+                    type="Emphasized"
+                    press="onMessagePopoverPress">
+                </Button>
+				<ToolbarSpacer/>
+				<Button press="handleApprovePMRequest" type="Accept" text="{i18n>approveButtonText}"/>
+				<Button press="handleRejectPMRequest" type="Reject" text="{i18n>rejectButtonText}"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

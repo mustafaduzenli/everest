@@ -1,0 +1,33 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:smartTable="sap.ui.comp.smarttable"
+	controllerName="hayat.fioHayatPriceManagement.controller.PriceManagementRequestList" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:html="http://www.w3.org/1999/xhtml">
+		<Panel>
+				<smartFilterBar:SmartFilterBar id="smartFilterBar" showFilterConfiguration="false" entitySet="PmRequestSet" useToolbar="false" persistencyKey="SmartFilterPKey" >
+					<smartFilterBar:controlConfiguration groupName="Search Parameters">
+						<smartFilterBar:ControlConfiguration key="Werks" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"/>
+						<smartFilterBar:ControlConfiguration key="Gsber" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"/>
+						<!--<smartFilterBar:ControlConfiguration key="Werks" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"/>-->
+						<!--<smartFilterBar:ControlConfiguration key="Ebeln" visibleInAdvancedArea="true" preventInitialDataFetchInValueHelpDialog="false"/>-->
+						<smartFilterBar:ControlConfiguration groupId="_BASIC" controlType="input" key="Apnxt" label="{i18n>userName}" visibleInAdvancedArea="true">
+							<smartFilterBar:customControl>
+								<Input enabled="false" value="{user>/Id}"/>
+							</smartFilterBar:customControl>
+						</smartFilterBar:ControlConfiguration>
+					</smartFilterBar:controlConfiguration>
+				</smartFilterBar:SmartFilterBar>
+			</Panel>
+	<IconTabBar headerBackgroundDesign="Translucent" select="handleIconFilterSelect" backgroundDesign="Translucent">
+		<items>
+			<IconTabFilter key="all" showAll="true" count="{viewModel>/allCount}" text="{i18n>allRequests}"/>
+			<IconTabSeparator/>
+			<IconTabFilter key="mKPrices" icon="sap-icon://grid" iconColor="Positive" count="{viewModel>/mkCount}" text="{i18n>mkPrices}"
+				design="Horizontal"/>
+			<IconTabFilter key="nonMKPrices" icon="sap-icon://table-view" iconColor="Positive" count="{viewModel>/nonMKCount}" text="{i18n>nonMKPrices}"
+				design="Horizontal"/>
+		</items>
+		<content>
+			<smartTable:SmartTable id="smartTable_ResponsiveTable" smartFilterId="smartFilterBar" tableType="ResponsiveTable" editable="false"
+				entitySet="PmRequestSet" useVariantManagement="false" useTablePersonalisation="true" header="PmRequestSet" showRowCount="true"
+				useExportToExcel="false" enableAutoBinding="true"></smartTable:SmartTable>
+		</content>
+	</IconTabBar>
+</mvc:View>

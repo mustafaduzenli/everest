@@ -1,0 +1,109 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="hayat.fioHayatPriceManagement.controller.PriceManagementRequestList" xmlns:html="http://www.w3.org/1999/xhtml">
+	<IconTabBar headerBackgroundDesign="Translucent" select="handleIconFilterSelect" backgroundDesign="Translucent">
+		<items>
+			<IconTabFilter key="all" showAll="true" count="{viewModel>/allCount}" text="{i18n>allRequests}"/>
+			<IconTabSeparator/>
+			<IconTabFilter key="mKPrices" icon="sap-icon://grid" iconColor="Positive" count="{viewModel>/mkCount}" text="{i18n>mkPrices}"
+				design="Horizontal"/>
+			<IconTabFilter key="nonMKPrices" icon="sap-icon://table-view" iconColor="Positive" count="{viewModel>/nonMKCount}" text="{i18n>nonMKPrices}"
+				design="Horizontal"/>
+		</items> 
+		<content>
+			<Table noDataText="{i18n>noDataText}" backgroundDesign="Translucent" mode="MultiSelect" id="pmRequestList" width="auto"
+				items="{ path : 'pmRequests>/PMRequests', sorter : { path : 'Preqn' } }">
+				<columns>
+					<Column>
+						<Text text="{i18n>requestNumber}"/>
+					</Column>
+					<Column minScreenWidth="tablet" popinDisplay="Inline" demandPopin="true">
+						<Text text="{i18n>plant}"/>
+					</Column>
+					<Column minScreenWidth="tablet" popinDisplay="Inline" demandPopin="true">
+						<Text text="{i18n>material}"/>
+					</Column>
+					<Column id="colOldPrice" popinDisplay="Inline" demandPopin="true">
+						<Text text="{i18n>oldPrice}"/>
+					</Column>
+					<!--<Column minScreenWidth="Small" demandPopin="true">-->
+					<!--	<Text text="{i18n>barcode}"/>-->
+					<!--</Column>-->
+					<Column id="colRequestPrice" popinDisplay="Inline"  demandPopin="true">
+						<Text text="{i18n>requestPrice}"/>
+					</Column>
+					<Column id="colPriceChange" popinDisplay="Inline" demandPopin="false">
+						<Text text="{i18n>priceDecrease}"/>
+					</Column>
+					<!--<Column visible="{viewModel>/mkVisible}">-->
+					<!--	<Text text="{i18n>oldMk}"/>-->
+					<!--</Column>-->
+					<!--<Column visible="{viewModel>/mkVisible}">-->
+					<!--	<Text text="{i18n>curMK}"/>-->
+					<!--</Column>-->
+					<!--<Column visible="{viewModel>/mkVisible}">-->
+					<!--	<Text text="{i18n>newMK}"/>-->
+					<!--</Column>-->
+					<Column id="colOldMK" minScreenWidth="tablet" popinDisplay="Inline" demandPopin="true">
+						<Text text="{i18n>oldMk}"/>
+					</Column>
+					<Column id="colCurMK" minScreenWidth="tablet" popinDisplay="Inline" demandPopin="true"> 
+						<Text text="{i18n>curMK}"/>
+					</Column>
+					<Column  id="colNewMK" minScreenWidth="tablet" popinDisplay="Inline" demandPopin="true" >
+						<Text text="{i18n>newMK}"/>
+					</Column>
+					<Column  id="colMKPriceChange" minScreenWidth="tablet" popinDisplay="Inline" demandPopin="false">
+						<Text text="{i18n>priceDecreaseMK}"/>
+					</Column>
+					<Column minScreenWidth="tablet" popinDisplay="Inline" demandPopin="false">
+						<Text text="{i18n>reasonCode}"/>
+					</Column>
+					<Column minScreenWidth="tablet" demandPopin="true" popinDisplay="Inline" width="4em">
+						<Text text="{i18n>columnQuantity}"/>
+					</Column>
+					<Column minScreenWidth="tablet" popinDisplay="Inline" demandPopin="true">
+						<Text text="{i18n>maxValidityDay}"/>
+					</Column>
+					<!--<Column width="12rem">-->
+					<!--	<Text text="{i18n>validFrom}/n{i18n>validTo}"/>-->
+					<!--</Column>-->
+				</columns>
+				<items>
+					<ColumnListItem type="Active" press="onPMRequestPress">
+						<cells>
+							<ObjectIdentifier title="{= parseFloat(${pmRequests>Preqn}) }"/>
+							<ObjectIdentifier  titleActive="true" titlePress="handleLinkPress" title="{pmRequests>Werks}" text="{pmRequests>Name1}"/>
+							<ObjectIdentifier titleActive="true" titlePress="handleLinkPress" title="{pmRequests>Maktx}" text="{pmRequests>Matnr}"/>
+							<ObjectNumber
+								number="{ parts: [{path: 'pmRequests>PriceCur'}, {path: 'pmRequests>Waers'}], type: 'sap.ui.model.type.Currency', formatOptions: { showMeasure: false } }"
+								unit="{pmRequests>Waers}"/>
+							<!--<Text text="{pmRequests>Ean11}"/>-->
+							<ObjectNumber
+								number="{ parts: [{path: 'pmRequests>PriceNew'}, {path: 'pmRequests>Waers'}], type: 'sap.ui.model.type.Currency', formatOptions: { showMeasure: false } }"
+								unit="{pmRequests>Waers}"/>
+							<Text text="{path:'pmRequests>PriceChg'}"/>
+							<ObjectNumber
+								number="{ parts: [{path: 'pmRequests>MkprcOld'}, {path: 'pmRequests>Waers'}], type: 'sap.ui.model.type.Currency', formatOptions: { showMeasure: false } }"
+								unit="{pmRequests>Waers}"/>
+							<ObjectNumber
+								number="{ parts: [{path: 'pmRequests>MkprcCur'}, {path: 'pmRequests>Waers'}], type: 'sap.ui.model.type.Currency', formatOptions: { showMeasure: false } }"
+								unit="{pmRequests>Waers}"/>
+							<ObjectNumber
+								number="{ parts: [{path: 'pmRequests>MkprcNew'}, {path: 'pmRequests>Waers'}], type: 'sap.ui.model.type.Currency', formatOptions: { showMeasure: false } }"
+								unit="{pmRequests>Waers}"/>
+							<Text text="{path:'pmRequests>MkprcChg'}"/>
+							<ObjectIdentifier titleActive="true" titlePress="handleLinkPress" title="{pmRequests>Prcrsn}" text="{pmRequests>Ddtext}" />
+							<ObjectNumber number="{ parts: [{path: 'pmRequests>Prcqty'}, {path: 'pmRequests>Lmeins'}], type: 'sap.ui.model.type.Currency', formatOptions: { showMeasure: false } }"
+								unit="{pmRequests>Lmeins}"/>
+							<ObjectNumber number="{pmRequests>Maxday}" emphasized="false"/>
+							<!--<VBox >-->
+							<!--	<Text text="{ path: 'pmRequests>Begdat', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MMMM d, yyyy'}}"/>-->
+							<!--	<Text text="{ path: 'pmRequests>Enddat', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'MMMM d, yyyy'}}"/>-->
+							<!--</VBox>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</IconTabBar>
+</mvc:View>
